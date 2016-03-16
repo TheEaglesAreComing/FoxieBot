@@ -136,8 +136,8 @@ global.Users = require("./users.js");
 global.Rooms = require("./rooms.js");
 
 function loadChatPlugins() {
-    let loaded = [];
-    let failed = [];
+    var loaded = [];
+    var failed = [];
     fs.readdirSync("./chat-plugins/").forEach(function(f) {
         try {
             Object.merge(Commands, require("./chat-plugins/" + f).commands);
