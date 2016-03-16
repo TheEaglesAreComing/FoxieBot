@@ -78,15 +78,15 @@ global.getEST = function(date) {
         }
         return true;
     }
-    var d = (date ? date : Date.now()) + (new Date().getTimezoneOffset() * 60 * 1000) - (1000 * 60 * 60 * 5);
+    let d = (date ? date : Date.now()) + (new Date().getTimezoneOffset() * 60 * 1000) - (1000 * 60 * 60 * 5);
     if (isDst(d)) d += 3600000;
     return new Date(d).toLocaleString();
 };
 
 global.log = function(item, text) {
     if (!Config.logging || (Config.logging !== true && (typeof Config.logging && !Config.logging.includes(item)))) return false;
-    var d = getEST();
-    var fontColours = {
+    let d = getEST();
+    let fontColours = {
         monitor: "red",
         ok: "green",
         error: "red",
@@ -98,7 +98,7 @@ global.log = function(item, text) {
     console.log("[" + d + "] " + item.toUpperCase()[fontColours[item] || "blue"] + "        ".slice(item.length) + text);
 }
 
-var sys = require("sys");
+let sys = require("sys");
 
 global.Config = require("./config/config.js");
 if (!Config.info.server || !Config.info.serverid || !Config.info.port) {
@@ -136,8 +136,8 @@ global.Users = require("./users.js");
 global.Rooms = require("./rooms.js");
 
 function loadChatPlugins() {
-    var loaded = [];
-    var failed = [];
+    let loaded = [];
+    let failed = [];
     fs.readdirSync("./chat-plugins/").forEach(function(f) {
         try {
             Object.merge(Commands, require("./chat-plugins/" + f).commands);
