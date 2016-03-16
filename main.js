@@ -78,7 +78,7 @@ global.getEST = function(date) {
         }
         return true;
     }
-    let d = (date ? date : Date.now()) + (new Date().getTimezoneOffset() * 60 * 1000) - (1000 * 60 * 60 * 5);
+    var d = (date ? date : Date.now()) + (new Date().getTimezoneOffset() * 60 * 1000) - (1000 * 60 * 60 * 5);
     if (isDst(d)) d += 3600000;
     return new Date(d).toLocaleString();
 };
