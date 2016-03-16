@@ -85,7 +85,7 @@ global.getEST = function(date) {
 
 global.log = function(item, text) {
     if (!Config.logging || (Config.logging !== true && (typeof Config.logging && !Config.logging.includes(item)))) return false;
-    let d = getEST();
+    var d = getEST();
     let fontColours = {
         monitor: "red",
         ok: "green",
